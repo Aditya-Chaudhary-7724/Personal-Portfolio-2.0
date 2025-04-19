@@ -83,6 +83,13 @@ function App() {
     <Router>
       <ScrollToTop />
       <AppContent />
+      <About />
+      <Experience />
+      <Education />
+      <Skills />
+      <Projects />
+      <Contact />
+      <Footer />
     </Router>
   );
 }
