@@ -12,51 +12,55 @@ function Projects() {
           "This is a Movie App which allows you to search for movies and also add them to your liked movie list",
         image: "movie-nest.jpg",
         tags: ["React.js"],
+        demo: "https://movie-app-six-cyan.vercel.app/",
       },
       {
-        title: "Weather-App",
-        description: "A sleek weather app that displays real-time weather updates and forecasts based on your location.",
+        title: "Weather-Wonder",
+        description:
+          "A sleek weather app that displays real-time weather updates and forecasts based on your location.",
         image: "/weather-app.jpg",
         tags: ["React", "Socket.io", "PostgreSQL"],
+        demo: "https://weather-app-react-js-zeta-nine.vercel.app/weather",
       },
       {
         title: "Food Bridge ",
-        description: "An efficient system for recording and managing surplus food donations from restaurants using a MySQL database for easy tracking and updates.",
+        description:
+          "An efficient system for recording and managing surplus food donations from restaurants using a MySQL database for easy tracking and updates.",
         image: "food-bridge.jpg",
         tags: ["Java", "MySql", "Spring Boot"],
       },
       {
         title: "Personal Portfolio",
-        description: "A personal portfolio website showcasing my projects and skills, built with React and Tailwind CSS.",
+        description:
+          "A personal portfolio website showcasing my projects and skills, built with React and Tailwind CSS.",
         image: "portfolio.jpg",
         tags: ["React", "Tailwind CSS"],
+        demo: "https://personal-portfolio-2-0-rho.vercel.app/",
+      },
+      {
+        title: "Estate Verse",
+        description:
+          "Estate-Verse is a real estate web application that allows users to browse, search, and list properties for rent or sale",
+        image: "estate-verse.png",
+        tags: ["React", "Tailwind CSS"],
+        demo: "https://real-estate-wine-tau.vercel.app/",
+      },
+      {
+        title: "Rythmix",
+        description:
+          "Rhythmix is a decentralized music NFT platform that empowers artists to mint, sell, and distribute their music as NFTs, eliminating intermediaries and ensuring transparent royalty distribution. Built with a sleek UI and blockchain integration, it fosters direct artist-fan engagement and combats music piracy using IPFS.",
+        image: "rythmix.png",
+        tags: ["React", "Tailwind CSS", "Solidity", "Web3.js", "Hardhat", "IPFS", "FirebaseAuth", "Node.js"],
+        demo: "https://rhythmix-rho.vercel.app",
       },
     ],
     aiml: [
       
-      {
-        title: "Sentiment Analysis Tool",
-        description: "NLP-based sentiment analysis for social media",
-        image: "/images/sentiment-tool.jpg",
-        tags: ["NLP", "PyTorch", "APIs"],
-      },
     ],
     dsa: [
-      {
-        title: "Algorithm Visualizer",
-        description: "Interactive visualization of common algorithms",
-        image: "/images/algo-vis.jpg",
-        tags: ["JavaScript", "D3.js", "Algorithms"],
-      },
-      {
-        title: "Data Structure Library",
-        description: "Custom implementation of advanced data structures",
-        image: "/images/data-struct-lib.jpg",
-        tags: ["C++", "Data Structures", "Templates"],
-      },
+      
     ],
   };
-  
 
   const filteredProjects =
     activeProjectFilter === "all"
@@ -122,12 +126,16 @@ function Projects() {
                     </span>
                   ))}
                 </div>
-                <a
-                  href="#"
-                  className="inline-flex items-center text-purple-400 hover:text-purple-300 transition-colors"
-                >
-                  View Project <ExternalLink size={16} className="ml-2" />
-                </a>
+                {project.demo && (
+                  <a
+                    href={project.demo}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center text-purple-400 hover:text-purple-300 transition-colors"
+                  >
+                    View Project <ExternalLink size={16} className="ml-2" />
+                  </a>
+                )}
               </div>
             </div>
           ))}

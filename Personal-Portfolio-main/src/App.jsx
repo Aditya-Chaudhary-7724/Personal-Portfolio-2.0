@@ -9,15 +9,15 @@ import Skills from "./components/Skills";
 import Projects from './components/Projects';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
-// ScrollToTop component to ensure page starts at top on navigation
+// ScrollToTop component
 function ScrollToTop() {
   const { pathname } = useLocation();
-  
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [pathname]);
-  
   return null;
 }
 
@@ -39,15 +39,9 @@ function ProgressBar({ scrollProgress }) {
 
 function AppContent() {
   const [darkMode, setDarkMode] = useState(true);
-  const [activeSection, setActiveSection] = useState("home");
   const [scrollProgress, setScrollProgress] = useState(0);
-  const location = useLocation();
-  
+
   useEffect(() => {
-    // Set active section based on current route
-    const path = location.pathname.substring(1) || "home";
-    setActiveSection(path);
-    
     const handleScroll = () => {
       const totalScroll = document.documentElement.scrollHeight - window.innerHeight;
       const currentProgress = (window.pageYOffset / totalScroll) * 100;
@@ -56,22 +50,21 @@ function AppContent() {
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [location]);
+  }, []);
 
   return (
-    <div className={`min-h-screen custom-scrollbar bg-[#121212] text-gray-100`}>
+    <div className={`min-h-screen scroll-smooth ${darkMode ? "bg-[#121212] text-gray-100" : "bg-white text-black"}`}>
       <ProgressBar scrollProgress={scrollProgress} />
-      <Navbar activeSection={activeSection} darkMode={darkMode} setDarkMode={setDarkMode} />
-      
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/experience" element={<Experience />} />
-        <Route path="/education" element={<Education />} />
-        <Route path="/skills" element={<Skills />} />
-        <Route path="/projects" element={<Projects />} />
-        <Route path="/contact" element={<Contact />} />
-      </Routes>
+      <Navbar darkMode={darkMode} setDarkMode={setDarkMode} />
+
+      {/* 👇 Sections instead of Routes */}
+      <Home />
+      <About />
+      <Education />
+      <Experience />
+      <Skills />
+      <Projects />
+      <Contact />
       
       <Footer />
     </div>
@@ -81,15 +74,9 @@ function AppContent() {
 function App() {
   return (
     <Router>
+      <ToastContainer />
       <ScrollToTop />
       <AppContent />
-      <About />
-      <Experience />
-      <Education />
-      <Skills />
-      <Projects />
-      <Contact />
-      <Footer />
     </Router>
   );
 }

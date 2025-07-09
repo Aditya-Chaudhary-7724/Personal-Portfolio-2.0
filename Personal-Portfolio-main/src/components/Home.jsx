@@ -13,7 +13,7 @@ function Home() {
 
       <div className="relative z-10 max-w-7xl mx-auto flex flex-col-reverse lg:flex-row items-center lg:items-start justify-between">
         {/* Text content */}
-        <div className="animate-float text-center lg:text-left">
+        <div className="animate-float text-center lg:text-left lg:mr-6">
           <h1 className="text-5xl sm:text-7xl font-bold mb-4 text-white">
             Hi, I'm{" "}
             <span className="text-purple-500 text-glow">
@@ -55,8 +55,8 @@ function Home() {
         <div className="mb-10 lg:mb-0">
           <img
             src="/myphoto.jpg"
-            alt=""
-            className="w-48 h-48 sm:w-64 sm:h-64 rounded-full object-cover border-4 border-purple-500 shadow-lg hover:scale-105 transition-transform"
+            alt="Aditya Chaudhary"
+            className="w-40 sm:w-56 h-72 sm:h-96 rounded-xl object-cover border-4 border-purple-500 shadow-lg hover:scale-105 transition-transform duration-300"
           />
         </div>
       </div>
