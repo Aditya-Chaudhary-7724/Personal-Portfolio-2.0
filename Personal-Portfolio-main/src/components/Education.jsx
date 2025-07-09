@@ -17,6 +17,13 @@ function Education() {
       description:
         "",
     },
+    {
+      degree: "10th Class (SSC)",
+      school: "Kendriya Vidayalaya, Ahmedabad",
+      period: "2020 - 2021",
+      description:
+        "",
+    },
   ];
 
   return (
