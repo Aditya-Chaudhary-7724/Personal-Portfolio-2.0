@@ -8,7 +8,7 @@ function Navbar({ darkMode, setDarkMode }) {
   const navItems = [
     { to: "home", label: "Home" },
     { to: "about", label: "About" },
-    { to: "education", label: "Education" }, // Moved education before experience
+    { to: "education", label: "Education" },
     { to: "experience", label: "Experience" },
     { to: "skills", label: "Skills" },
     { to: "projects", label: "Projects" },
@@ -17,7 +17,7 @@ function Navbar({ darkMode, setDarkMode }) {
 
   return (
     <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${darkMode ? "bg-[#121212]/80" : "bg-white/80"} backdrop-blur-sm shadow-md`}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 relative">
         <div className="flex justify-between items-center">
           {/* Desktop nav */}
           <div className="hidden md:flex items-center space-x-8">
@@ -37,7 +37,6 @@ function Navbar({ darkMode, setDarkMode }) {
                 {item.label}
               </ScrollLink>
             ))}
-
             <button
               onClick={() => setDarkMode(!darkMode)}
               className="p-2 rounded-full hover:bg-purple-500/20 transition-colors text-purple-500"
@@ -47,8 +46,8 @@ function Navbar({ darkMode, setDarkMode }) {
             </button>
           </div>
 
-          {/* Mobile menu button */}
-          <div className="md:hidden flex items-center space-x-2">
+          {/* Mobile menu button - moved to top-right */}
+          <div className="md:hidden absolute right-4 top-4 flex items-center space-x-2">
             <button
               onClick={() => setDarkMode(!darkMode)}
               className="p-2 rounded-full hover:bg-purple-500/20 transition-colors text-purple-500"
@@ -68,7 +67,7 @@ function Navbar({ darkMode, setDarkMode }) {
 
         {/* Mobile menu */}
         {menuOpen && (
-          <div className={`mt-4 md:hidden flex flex-col space-y-3 px-2 pb-4 rounded-lg ${darkMode ? "bg-[#1a1a1a]" : "bg-white shadow"}`}>
+          <div className={`mt-16 md:hidden flex flex-col space-y-3 px-2 pb-4 rounded-lg ${darkMode ? "bg-[#1a1a1a]" : "bg-white shadow"}`}>
             {navItems.map((item) => (
               <ScrollLink
                 key={item.to}
