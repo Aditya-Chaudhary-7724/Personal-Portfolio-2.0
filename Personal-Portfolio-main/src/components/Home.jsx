@@ -54,7 +54,7 @@ function Home() {
         {/* Photo area */}
         <div className="mb-10 lg:mb-0">
           <img
-            src="/myphoto.jpg"
+            src="/myphoto2.jpg"
             alt="Aditya Chaudhary"
             className="w-40 sm:w-56 h-72 sm:h-96 rounded-xl object-cover border-4 border-purple-500 shadow-lg hover:scale-105 transition-transform duration-300"
           />
