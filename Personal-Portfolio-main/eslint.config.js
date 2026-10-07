@@ -7,11 +7,14 @@ import tseslint from 'typescript-eslint';
 export default tseslint.config(
   { ignores: ['dist'] },
   {
+    // The app is written in .jsx; the typescript-eslint parser handles JS/JSX
+    // and tracks identifiers used in JSX, so unused imports are caught too.
     extends: [js.configs.recommended, ...tseslint.configs.recommended],
-    files: ['**/*.{ts,tsx}'],
+    files: ['**/*.{js,jsx,ts,tsx}'],
     languageOptions: {
-      ecmaVersion: 2020,
+      ecmaVersion: 2022,
       globals: globals.browser,
+      parserOptions: { ecmaFeatures: { jsx: true } },
     },
     plugins: {
       'react-hooks': reactHooks,
@@ -24,5 +27,9 @@ export default tseslint.config(
         { allowConstantExport: true },
       ],
     },
+  },
+  {
+    files: ['*.config.{js,ts}'],
+    languageOptions: { globals: globals.node },
   }
 );
