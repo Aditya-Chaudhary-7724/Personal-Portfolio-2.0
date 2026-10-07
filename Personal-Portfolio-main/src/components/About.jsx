@@ -1,52 +1,72 @@
-import React from "react";
-import { User } from "lucide-react";
+import { motion } from 'framer-motion';
+import { education, profile } from '../data/content';
+import SectionHeader from './SectionHeader';
 
 function About() {
   return (
-    <section id="about" className="py-20 bg-[#1a1a1a]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center space-x-4 mb-8">
-          <User className="text-purple-500" size={32} />
-          <h2 className="text-3xl font-bold">About Me</h2>
-        </div>
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          <div className="relative group">
+    <section id="about" aria-labelledby="about-title" className="page py-20 lg:py-28">
+      <SectionHeader
+        id="about-title"
+        index="01"
+        label="About"
+        title={['Mostly, the system', <em key="e">around the model.</em>]}
+      />
+
+      <div className="grid-12 gap-y-12">
+        <figure className="col-span-2 sm:col-span-3 lg:col-span-3">
+          <div className="group relative aspect-[4/5] overflow-hidden bg-raised">
             <img
-              src="https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=800&q=80"
-              alt="Working on laptop"
-              className="rounded-lg shadow-xl transition-all duration-500 transform group-hover:scale-105"
+              src="/img/aditya.jpg"
+              alt="Aditya Chaudhary, smiling, in a red polo shirt"
+              width="560"
+              height="785"
+              loading="lazy"
+              decoding="async"
+              className="h-full w-full object-cover object-top grayscale-[0.85] transition-[filter] duration-700 group-hover:grayscale-0"
             />
-            <div className="absolute inset-0 bg-purple-500 rounded-lg opacity-0 group-hover:opacity-20 transition-opacity"></div>
           </div>
-          <div>
-            <p className="text-lg mb-6 text-gray-300">
-              I'm a passionate Front Stack Developer focused on building fast,
-              modern, and scalable web applications. I specialize in React.js
-              and Tailwind CSS for crafting responsive frontends, and I am
-              also learning and working with MySQL, MongoDB, and Firebase on
-              the backend to bring powerful ideas to life. Whether it's
-              designing smooth UI or managing real-time data, I love solving
-              problems through code. When I'm not building, you'll catch me
-              exploring new tech or contributing to cool projects.
-            </p>
-            <div className="grid grid-cols-2 gap-4">
-              {[
-                { label: "Experience", value: "0 Years" },
-                { label: "Projects", value: "4 Completed" },
-                { label: "Clients", value: "None" },
-                { label: "Countries", value: "None Served" },
-              ].map(({ label, value }) => (
-                <div
-                  key={label}
-                  className="bg-[#232323] p-4 rounded-lg hover:bg-purple-500/20 transition-colors card-hover"
-                >
-                  <h3 className="font-semibold">{label}</h3>
-                  <p>{value}</p>
-                </div>
-              ))}
-            </div>
-          </div>
+          <figcaption className="label mt-3">fig. 1 — Aditya</figcaption>
+        </figure>
+
+        <div className="col-span-4 sm:col-span-8 lg:col-span-6">
+          {profile.about.map((para, i) => (
+            <motion.p
+              key={i}
+              className={`max-w-[62ch] ${
+                i === 0 ? 'text-[20px] leading-[1.55] text-ink sm:text-[22px]' : 'mt-6 text-[17px] leading-relaxed text-ink-2'
+              }`}
+              initial={{ opacity: 0, y: 12 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '0px 0px -10% 0px' }}
+              transition={{ duration: 0.6, delay: i * 0.08 }}
+            >
+              {para}
+            </motion.p>
+          ))}
         </div>
+
+        <aside className="col-span-4 sm:col-span-8 lg:col-span-3" aria-label="Quick facts">
+          <dl className="grid grid-cols-2 gap-x-6 gap-y-8 border-t border-rule pt-4 lg:grid-cols-1">
+            <div>
+              <dt className="label">Studying</dt>
+              <dd className="mt-2 text-[15px] text-ink-2">
+                {education.degree}
+                <br />
+                {education.period} · CGPA {education.cgpa}
+              </dd>
+            </div>
+            <div>
+              <dt className="label">Interested in</dt>
+              <dd className="mt-2">
+                <ul className="text-[15px] leading-7 text-ink-2">
+                  {profile.interests.map((it) => (
+                    <li key={it}>{it}</li>
+                  ))}
+                </ul>
+              </dd>
+            </div>
+          </dl>
+        </aside>
       </div>
     </section>
   );
