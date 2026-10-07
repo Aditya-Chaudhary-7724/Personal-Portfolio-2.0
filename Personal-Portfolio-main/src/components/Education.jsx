@@ -1,59 +1,38 @@
-import React from "react";
-import { GraduationCap, Calendar } from "lucide-react";
+import { certifications, education } from '../data/content';
+import SectionHeader from './SectionHeader';
 
 function Education() {
-  const educations = [
-    {
-      degree: "B.Tech in Computer Science and Engineering ",
-      school: "SRM Institute of Science and Technology",
-      period: "2024 - 2027",
-      description:
-        "I am currently pursuing a B.Tech degree at SRMIST. I achieved a 9.09 GPA in my first semester, followed by a 9.04 GPA in the second semester, followed by a 9.83 GPA in third semester ,resulting in an impressive cumulative CGPA of 9.33.",
-    },
-    {
-      degree: "12th Class (HSC)",
-      school: "Kendriya Vidayalaya, Mumbai",
-      period: "2022 - 2023",
-      description:
-        "",
-    },
-    {
-      degree: "10th Class (SSC)",
-      school: "Kendriya Vidayalaya, Ahmedabad",
-      period: "2020 - 2021",
-      description:
-        "",
-    },
-  ];
-
   return (
-    <section id="education" className="py-20 bg-[#1a1a1a]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center space-x-4 mb-12">
-          <GraduationCap className="text-purple-500" size={32} />
-          <h2 className="text-3xl font-bold">Education</h2>
+    <section id="education" aria-labelledby="education-title" className="page py-20 lg:py-28">
+      <SectionHeader id="education-title" index="05" label="Education" title="Education & certifications" />
+
+      <div className="grid-12 gap-y-14">
+        <div className="col-span-4 sm:col-span-8 lg:col-span-5">
+          <p className="label mb-4">Degree</p>
+          <h3 className="font-serif text-[clamp(1.8rem,3vw,2.4rem)] leading-tight">{education.school}</h3>
+          <dl className="mt-6 grid grid-cols-[6rem_1fr] gap-y-2 border-t border-rule pt-4 font-mono text-[12.5px]">
+            <dt className="text-ink-3">course</dt>
+            <dd className="text-ink-2">{education.degree}</dd>
+            <dt className="text-ink-3">graduating</dt>
+            <dd className="text-ink-2">{education.period}</dd>
+            <dt className="text-ink-3">cgpa</dt>
+            <dd className="text-ink">{education.cgpa}</dd>
+          </dl>
         </div>
-        <div className="space-y-8">
-          {educations.map((edu, index) => (
-            <div key={index} className="relative pl-8 pb-8 group">
-              <div className="absolute left-0 top-0 h-full w-0.5 bg-purple-500/30 group-hover:bg-purple-500 transition-colors"></div>
-              <div className="absolute left-0 top-2 w-2 h-2 rounded-full bg-purple-500 -translate-x-1/2"></div>
-              <div className="bg-[#232323] p-6 rounded-lg hover:bg-[#2a2a2a] transition-colors">
-                <h3 className="text-xl font-semibold text-purple-400">
-                  {edu.degree}
-                </h3>
-                <div className="flex items-center space-x-2 mb-2 text-gray-400">
-                  <span>{edu.school}</span>
-                  <span>•</span>
-                  <span className="flex items-center">
-                    <Calendar size={14} className="mr-1" />
-                    {edu.period}
-                  </span>
+
+        <div className="col-span-4 sm:col-span-8 lg:col-span-6 lg:col-start-7">
+          <p className="label mb-4">Certifications</p>
+          <ul className="border-b border-rule">
+            {certifications.map((c) => (
+              <li key={c.name} className="grid grid-cols-1 gap-1 border-t border-rule py-4 sm:grid-cols-[1fr_auto] sm:gap-6">
+                <div>
+                  <p className="text-[15.5px] text-ink">{c.name}</p>
+                  <p className="text-[13.5px] text-ink-3">{c.issuer}</p>
                 </div>
-                <p className="text-gray-300">{edu.description}</p>
-              </div>
-            </div>
-          ))}
+                <p className="font-mono text-[11.5px] text-ink-3 sm:text-right">{c.date}</p>
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
     </section>
